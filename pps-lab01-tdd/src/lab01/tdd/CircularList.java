@@ -47,6 +47,7 @@ public interface CircularList {
 
     /**
      * Provides a copy of the list.
+     * @return the copy of the list.
      */
     CircularList copy();
 }
