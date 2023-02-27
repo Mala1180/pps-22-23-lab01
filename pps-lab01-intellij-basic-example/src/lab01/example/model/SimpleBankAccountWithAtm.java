@@ -1,5 +1,8 @@
 package lab01.example.model;
 
+import lab01.example.excemption.IllegalAmountException;
+import lab01.example.excemption.IllegalUserException;
+
 public class SimpleBankAccountWithAtm implements BankAccount {
 
     public static final int ATM_FEE = 1;
@@ -24,14 +27,20 @@ public class SimpleBankAccountWithAtm implements BankAccount {
     @Override
     public void deposit(int userID, double amount) {
         if (userID != holder.getId()) {
-            throw new IllegalArgumentException();
+            throw new IllegalUserException();
         }
         this.balance = this.balance + amount - ATM_FEE;
-
     }
 
     @Override
     public void withdraw(int userID, double amount) {
-
+        if (userID != holder.getId()) {
+            throw new IllegalUserException();
+        }
+        double newBalance = this.balance - amount - ATM_FEE;
+        if (newBalance < 0) {
+            throw new IllegalAmountException();
+        }
+        this.balance = newBalance;
     }
 }

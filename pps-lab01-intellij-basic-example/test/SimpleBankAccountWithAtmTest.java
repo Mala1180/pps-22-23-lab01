@@ -8,13 +8,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SimpleBankAccountWithAtmTest {
 
-    public static final int ATM_FEE = 1;
     private AccountHolder accountHolder;
     private BankAccount bankAccount;
 
 
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() {
         accountHolder = new AccountHolder("Mario", "Rossi", 1);
         bankAccount = new SimpleBankAccountWithAtm(accountHolder, 0);
     }
@@ -28,6 +27,13 @@ class SimpleBankAccountWithAtmTest {
     void testDepositWithATM() {
         bankAccount.deposit(accountHolder.getId(), 100);
         assertEquals(100 - SimpleBankAccountWithAtm.ATM_FEE, bankAccount.getBalance());
+    }
+
+    @Test
+    void testWithdrawWithATM() {
+        bankAccount.deposit(accountHolder.getId(), 100);
+        bankAccount.withdraw(accountHolder.getId(), 70);
+        assertEquals(30 - 2 * SimpleBankAccountWithAtm.ATM_FEE, bankAccount.getBalance());
     }
 
 }
