@@ -1,4 +1,4 @@
-package lab01.example.excemption;
+package lab01.example.exception;
 
 public class IllegalAmountException extends RuntimeException {
 }

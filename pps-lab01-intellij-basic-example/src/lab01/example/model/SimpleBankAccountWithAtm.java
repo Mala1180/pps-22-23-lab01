@@ -1,7 +1,7 @@
 package lab01.example.model;
 
-import lab01.example.excemption.IllegalAmountException;
-import lab01.example.excemption.IllegalUserException;
+import lab01.example.exception.IllegalAmountException;
+import lab01.example.exception.IllegalUserException;
 
 public class SimpleBankAccountWithAtm implements BankAccount {
 
