@@ -27,19 +27,15 @@ public class CircularListTest {
 
     @Test
     void testAddThreeIntegers() {
-        circularList.add(1);
-        circularList.add(2);
-        circularList.add(3);
+        addElements(1, 2, 3);
         assertEquals(3, circularList.size());
     }
 
     @Test
     void testGetNext() {
-        circularList.add(1);
-        circularList.add(2);
+        addElements(1, 2, 3);
         assertEquals(1, circularList.next().get());
         assertEquals(2, circularList.next().get());
-        circularList.add(3);
         assertEquals(3, circularList.next().get());
     }
 
@@ -50,9 +46,7 @@ public class CircularListTest {
 
     @Test
     void testGetNextAndGetPrevious() {
-        circularList.add(1);
-        circularList.add(2);
-        circularList.add(3);
+        addElements(1, 2, 3);
         assertEquals(1, circularList.next().get());
         assertEquals(2, circularList.next().get());
         assertEquals(3, circularList.next().get());
@@ -62,17 +56,24 @@ public class CircularListTest {
 
     @Test
     void testGetNextCircular() {
-        circularList.add(1);
-        circularList.add(2);
+        addElements(1, 2, 3);
         assertEquals(1, circularList.next().get());
         assertEquals(2, circularList.next().get());
+        assertEquals(3, circularList.next().get());
         assertEquals(1, circularList.next().get());
+
     }
 
     @Test
     void testGetPreviousCircular() {
-        circularList.add(1);
-        circularList.add(2);
-        assertEquals(2, circularList.previous().get());
+        addElements(1, 2, 3);
+        assertEquals(3, circularList.previous().get());
     }
+
+    private void addElements(int... elements) {
+        for (int element : elements) {
+            this.circularList.add(element);
+        }
+    }
+
 }
