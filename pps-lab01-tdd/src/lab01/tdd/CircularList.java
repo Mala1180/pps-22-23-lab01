@@ -44,4 +44,9 @@ public interface CircularList {
      * Note the first one is the first added to the list.
      */
     void reset();
+
+    /**
+     * Provides a copy of the list.
+     */
+    CircularList copy();
 }

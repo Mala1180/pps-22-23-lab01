@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public class CircularListImpl implements CircularList {
 
-    public static final int STARTING_INDEX = -1;
+    private static final int STARTING_INDEX = -1;
     private final List<Integer> list = new ArrayList<>();
     private int currentElementIndex = STARTING_INDEX;
 
@@ -53,5 +53,14 @@ public class CircularListImpl implements CircularList {
     public void reset() {
         this.list.clear();
         this.currentElementIndex = STARTING_INDEX;
+    }
+
+    @Override
+    public CircularList copy() {
+        CircularList circularList = new CircularListImpl();
+        for (int element : this.list) {
+            circularList.add(element);
+        }
+        return circularList;
     }
 }
