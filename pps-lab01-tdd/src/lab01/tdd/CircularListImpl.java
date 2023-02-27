@@ -1,14 +1,14 @@
 package lab01.tdd;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 public class CircularListImpl implements CircularList {
 
+    public static final int STARTING_INDEX = -1;
     private final List<Integer> list = new ArrayList<>();
-    private int currentElementIndex = -1;
+    private int currentElementIndex = STARTING_INDEX;
 
     @Override
     public void add(int element) {
@@ -22,7 +22,7 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public boolean isEmpty() {
-        return true;
+        return this.list.size() == 0;
     }
 
     @Override
@@ -51,6 +51,7 @@ public class CircularListImpl implements CircularList {
 
     @Override
     public void reset() {
-
+        this.list.clear();
+        this.currentElementIndex = STARTING_INDEX;
     }
 }

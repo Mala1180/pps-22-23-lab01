@@ -15,6 +15,12 @@ public class CircularListTest {
     //TODO: test implementation
     private CircularList circularList;
 
+    private void addElements(int... elements) {
+        for (int element : elements) {
+            this.circularList.add(element);
+        }
+    }
+
     @BeforeEach
     void beforeEach() {
         circularList = new CircularListImpl();
@@ -29,6 +35,7 @@ public class CircularListTest {
     void testAddThreeIntegers() {
         addElements(1, 2, 3);
         assertEquals(3, circularList.size());
+        assertFalse(circularList.isEmpty());
     }
 
     @Test
@@ -70,10 +77,16 @@ public class CircularListTest {
         assertEquals(3, circularList.previous().get());
     }
 
-    private void addElements(int... elements) {
-        for (int element : elements) {
-            this.circularList.add(element);
-        }
+    @Test
+    void testReset() {
+        addElements(1, 2);
+        this.circularList.reset();
+        assertTrue(circularList.isEmpty());
     }
 
+    @Test
+    void testAddElementsAfterReset() {
+        testReset();
+        testAddThreeIntegers();
+    }
 }
