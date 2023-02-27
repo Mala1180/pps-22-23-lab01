@@ -3,6 +3,7 @@ import lab01.example.model.BankAccount;
 import lab01.example.model.SimpleBankAccount;
 
 import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -14,7 +15,7 @@ class SimpleBankAccountTest {
     private BankAccount bankAccount;
 
     @BeforeEach
-    void beforeEach(){
+    void beforeEach() {
         accountHolder = new AccountHolder("Mario", "Rossi", 1);
         bankAccount = new SimpleBankAccount(accountHolder, 0);
     }
