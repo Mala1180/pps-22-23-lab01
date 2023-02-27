@@ -1,3 +1,5 @@
+package lab01.tdd;
+
 import lab01.tdd.CircularList;
 import lab01.tdd.CircularListImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class CircularListTest {
 
-    //TODO: test implementation
     private CircularList circularList;
 
     private void addElements(int... elements) {
@@ -33,14 +34,14 @@ public class CircularListTest {
 
     @Test
     void testAddThreeIntegers() {
-        addElements(1, 2, 3);
+        this.addElements(1, 2, 3);
         assertEquals(3, circularList.size());
         assertFalse(circularList.isEmpty());
     }
 
     @Test
     void testGetNext() {
-        addElements(1, 2, 3);
+        this.addElements(1, 2, 3);
         assertEquals(1, circularList.next().get());
         assertEquals(2, circularList.next().get());
         assertEquals(3, circularList.next().get());
@@ -53,7 +54,7 @@ public class CircularListTest {
 
     @Test
     void testGetNextAndGetPrevious() {
-        addElements(1, 2, 3);
+        this.addElements(1, 2, 3);
         assertEquals(1, circularList.next().get());
         assertEquals(2, circularList.next().get());
         assertEquals(3, circularList.next().get());
@@ -63,30 +64,29 @@ public class CircularListTest {
 
     @Test
     void testGetNextCircular() {
-        addElements(1, 2, 3);
+        this.addElements(1, 2, 3);
         assertEquals(1, circularList.next().get());
         assertEquals(2, circularList.next().get());
         assertEquals(3, circularList.next().get());
         assertEquals(1, circularList.next().get());
-
     }
 
     @Test
     void testGetPreviousCircular() {
-        addElements(1, 2, 3);
+        this.addElements(1, 2, 3);
         assertEquals(3, circularList.previous().get());
     }
 
     @Test
     void testReset() {
-        addElements(1, 2);
+        this.addElements(1, 2);
         this.circularList.reset();
         assertTrue(circularList.isEmpty());
     }
 
     @Test
     void testAddElementsAfterReset() {
-        testReset();
-        testAddThreeIntegers();
+        this.testReset();
+        this.testAddThreeIntegers();
     }
 }
