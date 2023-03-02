@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 public class CircularListWithIteratorImpl implements CircularListWithIterators {
 
-    private CircularList circularList;
+    private final CircularList circularList;
 
     public CircularListWithIteratorImpl(CircularList circularList) {
         this.circularList = circularList;
@@ -17,12 +17,14 @@ public class CircularListWithIteratorImpl implements CircularListWithIterators {
 
     @Override
     public Iterator<Integer> forwardIterator() {
-        return this.iterator(() -> this.circularList.next().get());
+        CircularList circularListCopy = this.circularList.copy();
+        return this.iterator(() -> circularListCopy.next().get());
     }
 
     @Override
     public Iterator<Integer> backwardIterator() {
-        return this.iterator(() -> this.circularList.previous().get());
+        CircularList circularListCopy = this.circularList.copy();
+        return this.iterator(() -> circularListCopy.previous().get());
     }
 
     private Iterator<Integer> iterator(IntSupplier supplier) {

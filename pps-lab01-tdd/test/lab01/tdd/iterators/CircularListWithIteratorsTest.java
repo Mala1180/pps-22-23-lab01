@@ -46,5 +46,10 @@ class CircularListWithIteratorsTest {
         assertTrue(iterator.hasNext());
     }
 
-
+    @Test
+    void testForwardIteratorAndBackwardIterator() {
+        this.testForwardIterator();
+        beforeEach();
+        this.testBackwardIterator();
+    }
 }
