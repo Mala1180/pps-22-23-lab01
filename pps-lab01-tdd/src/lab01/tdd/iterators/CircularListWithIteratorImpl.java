@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.function.IntSupplier;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class CircularListWithIteratorImpl implements CircularListWithIterators {
 
@@ -27,9 +28,9 @@ public class CircularListWithIteratorImpl implements CircularListWithIterators {
         return this.iterator(() -> circularListCopy.previous().get());
     }
 
-    private Iterator<Integer> iterator(IntSupplier supplier) {
+    private Iterator<Integer> iterator(Supplier<Integer> supplier) {
         return circularList.size() == 0 ?
                 IntStream.empty().iterator() :
-                IntStream.generate(supplier).iterator();
+                Stream.generate(supplier).iterator();
     }
 }
