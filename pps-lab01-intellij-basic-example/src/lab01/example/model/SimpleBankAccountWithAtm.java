@@ -11,7 +11,7 @@ public class SimpleBankAccountWithAtm implements BankAccount {
 
     @Override
     public AccountHolder getHolder() {
-        return null;
+        return this.bankAccount.getHolder();
     }
 
     @Override
