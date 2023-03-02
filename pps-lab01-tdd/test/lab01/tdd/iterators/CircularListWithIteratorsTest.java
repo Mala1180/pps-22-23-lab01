@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.function.IntSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -31,19 +32,13 @@ class CircularListWithIteratorsTest {
     @Test
     void testForwardIterator() {
         Iterator<Integer> iterator = circularListWithIterators.forwardIterator();
-        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            assertEquals(circularList.next().get(), iterator.next());
-        }
-        assertTrue(iterator.hasNext());
+        this.testIterator(iterator, () -> circularList.next().get());
     }
 
     @Test
     void testBackwardIterator() {
         Iterator<Integer> iterator = circularListWithIterators.backwardIterator();
-        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
-            assertEquals(circularList.previous().get(), iterator.next());
-        }
-        assertTrue(iterator.hasNext());
+        this.testIterator(iterator, () -> circularList.previous().get());
     }
 
     @Test
@@ -51,5 +46,12 @@ class CircularListWithIteratorsTest {
         this.testForwardIterator();
         beforeEach();
         this.testBackwardIterator();
+    }
+
+    private void testIterator(Iterator iterator, IntSupplier supplierOfExpectedValue) {
+        for (int i = 0; i < NUMBER_OF_ITERATIONS; i++) {
+            assertEquals(supplierOfExpectedValue.getAsInt(), iterator.next());
+        }
+        assertTrue(iterator.hasNext());
     }
 }
