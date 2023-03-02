@@ -5,8 +5,6 @@ import lab01.tdd.CircularListImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.function.IntSupplier;
 
